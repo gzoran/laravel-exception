@@ -1,0 +1,27 @@
+{
+    "name": "gzoran/laravel-exception",
+    "description": "Laravel 异常处理封装",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mike <zhengzhe94@gmail.com>",
+            "email": "zhengzhe94@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "~5.5",
+        "gzoran/laravel-api-response": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Gzoran\\Exception\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gzoran\\Exception\\LaravelExceptionProvider"
+            ]
+        }
+    }
+}
