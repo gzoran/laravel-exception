@@ -8,9 +8,9 @@
 namespace Gzoran\Exception\Templates;
 
 
-use Gzoran\Exception\Contracts\TemplateContracts;
+use Gzoran\Exception\Contracts\TemplateContract;
 
-class AppExceptionHandlerTemplate implements TemplateContracts
+class AppExceptionHandlerTemplate implements TemplateContract
 {
 
     /**

@@ -8,7 +8,7 @@
 namespace Gzoran\Exception\Contracts;
 
 
-interface TemplateContracts
+interface TemplateContract
 {
     /**
      * @author Mike <zhengzhe94@gmail.com>

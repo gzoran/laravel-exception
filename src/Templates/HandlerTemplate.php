@@ -7,9 +7,9 @@
 
 namespace Gzoran\Exception\Templates;
 
-use Gzoran\Exception\Contracts\TemplateContracts;
+use Gzoran\Exception\Contracts\TemplateContract;
 
-class HandlerTemplate implements TemplateContracts
+class HandlerTemplate implements TemplateContract
 {
     /**
      * @var string
