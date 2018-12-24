@@ -2,9 +2,6 @@
 
 namespace Gzoran\Exception\Commands;
 
-use Gzoran\Exception\Templates\AppExceptionHandlerTemplate;
-use Gzoran\Exception\Templates\AppExceptionTemplate;
-use Gzoran\Exception\Templates\ExceptionHandlerTemplate;
 use Gzoran\Exception\Templates\HandlerTemplate;
 use Illuminate\Console\Command;
 
@@ -77,7 +74,7 @@ class MakeExceptionHandler extends Command
         }
 
         if (! is_dir($this->folderPath)) {
-            mkdir($this->folderPath);
+            mkdir($this->folderPath, 0777, true);
         }
 
         $template = new HandlerTemplate($this->namespace, $this->className);
@@ -113,7 +110,7 @@ class MakeExceptionHandler extends Command
             $folder_path .= DIRECTORY_SEPARATOR . $value;
         }
 
-        return base_path() . $folder_path;
+        return app_path() . $folder_path;
     }
 
     /**
@@ -133,6 +130,6 @@ class MakeExceptionHandler extends Command
             $namespace .= '\\' . $value;
         }
 
-        return ltrim($namespace, '\\');
+        return 'App\\' . ltrim($namespace, '\\');
     }
 }
