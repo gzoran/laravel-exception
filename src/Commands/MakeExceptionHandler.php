@@ -66,7 +66,7 @@ class MakeExceptionHandler extends Command
         $this->className    = end($this->classExplode);
 
         if (count($this->classExplode) == 1) {
-            $this->folderPath = 'App' . DIRECTORY_SEPARATOR . 'Exceptions' . DIRECTORY_SEPARATOR . 'Handlers';
+            $this->folderPath = 'app' . DIRECTORY_SEPARATOR . 'Exceptions' . DIRECTORY_SEPARATOR . 'Handlers';
             $this->namespace  = 'App\\Exceptions\\Handlers';
         } else {
             $this->folderPath = $this->getFolderPath();
