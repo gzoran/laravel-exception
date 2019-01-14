@@ -1,8 +1,8 @@
 <?php
 /**
  * Created by Mike <zhengzhe94@gmail.com>.
- * Date: 2018/12/12
- * Time: 11:12
+ * Date: 2019/1/14
+ * Time: 17:03
  */
 
 namespace Gzoran\Exception\Templates;
@@ -10,7 +10,7 @@ namespace Gzoran\Exception\Templates;
 
 use Gzoran\Exception\Contracts\TemplateContract;
 
-class ExceptionHandlerTemplate implements TemplateContract
+class QueryExceptionHandlerTemplate implements TemplateContract
 {
 
     /**
@@ -24,30 +24,16 @@ class ExceptionHandlerTemplate implements TemplateContract
 
 namespace App\Exceptions\Handlers;
 
-use Exception;
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
 use Gzoran\Http\ApiResponseTrait;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
-class ExceptionHandler implements ExceptionHandlerContract
+class QueryExceptionHandler implements ExceptionHandlerContract
 {
     use ApiResponseTrait;
 
     /**
-     * @var bool
-     */
-    private \$isDebug;
-
-    /**
-     * ExceptionHandler constructor.
-     */
-    public function __construct()
-    {
-        \$this->isDebug = config('app.debug');
-    }
-
-    /**
-     * @author Mike <zhengzhe94@gmail.com>
      * @param Request \$request
      * @param \$exception
      * @return mixed
@@ -55,36 +41,25 @@ class ExceptionHandler implements ExceptionHandlerContract
     public function apiRender(Request \$request, \$exception)
     {
         /**
-         * @var Exception \$exception
+         * @var QueryException \$exception
          */
-        \$errors['info'] = \$exception->getMessage();
-        if (\$this->isDebug) {
-            \$errors['exception'] = get_class(\$exception);
-            \$errors['file']      = \$exception->getFile();
-            \$errors['line']      = \$exception->getLine();
-            \$errors['trace']     = \$exception->getTrace();
-        }
-
         return \$this->internalServerError([
             config('exception.status.key') => config('exception.status.value'),
             'message' => 'Internal Server Error',
-            'errors'  => \$errors,
+            'errors'  => [
+                'info' => \$exception->getPrevious()->getMessage()
+            ],
         ]);
     }
 
     /**
-     * @author Mike <zhengzhe94@gmail.com>
      * @param Request \$request
      * @param \$exception
      * @return mixed
      */
     public function pageRender(Request \$request, \$exception)
     {
-        if (\$this->isDebug) {
-            return false;
-        }
-
-        return response(500, 500);
+        return false;
     }
 }
 EOF;

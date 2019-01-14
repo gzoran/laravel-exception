@@ -1,8 +1,8 @@
 <?php
 /**
  * Created by Mike <zhengzhe94@gmail.com>.
- * Date: 2018/12/12
- * Time: 10:57
+ * Date: 2019/1/14
+ * Time: 17:29
  */
 
 namespace Gzoran\Exception\Templates;
@@ -10,7 +10,7 @@ namespace Gzoran\Exception\Templates;
 
 use Gzoran\Exception\Contracts\TemplateContract;
 
-class AppExceptionHandlerTemplate implements TemplateContract
+class ValidationExceptionHandlerTemplate implements TemplateContract
 {
 
     /**
@@ -24,18 +24,16 @@ class AppExceptionHandlerTemplate implements TemplateContract
 
 namespace App\Exceptions\Handlers;
 
-
-use App\Exceptions\AppException;
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
 use Gzoran\Http\ApiResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
-class AppExceptionHandler implements ExceptionHandlerContract
+class ValidationExceptionHandler implements ExceptionHandlerContract
 {
     use ApiResponseTrait;
 
     /**
-     * @author Mike <zhengzhe94@gmail.com>
      * @param Request \$request
      * @param \$exception
      * @return mixed
@@ -43,23 +41,26 @@ class AppExceptionHandler implements ExceptionHandlerContract
     public function apiRender(Request \$request, \$exception)
     {
         /**
-         * @var AppException \$exception
+         * @var ValidationException \$exception
          */
-        return \$this->response(\$exception->getResponse(), \$exception->getHttpStatus());
+        return \$this->unprocessableEntity([
+            config('exception.status.key') => config('exception.status.value'),
+            'message' => 'The given data was invalid',
+            'errors'  => \$exception->errors(),
+        ]);
     }
 
     /**
-     * @author Mike <zhengzhe94@gmail.com>
      * @param Request \$request
      * @param \$exception
      * @return mixed
      */
     public function pageRender(Request \$request, \$exception)
     {
-        return response(500, 500);
+        return false;
     }
 }
-
 EOF;
+
     }
 }

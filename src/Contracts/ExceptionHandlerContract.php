@@ -24,8 +24,8 @@ interface ExceptionHandlerContract
     /**
      * @author Mike <zhengzhe94@gmail.com>
      * @param Request $request
-     * @param Exception $exception
+     * @param $exception
      * @return mixed
      */
-    public function pageRender(Request $request, Exception $exception);
+    public function pageRender(Request $request, $exception);
 }

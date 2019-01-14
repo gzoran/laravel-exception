@@ -40,7 +40,6 @@ class HandlerTemplate implements TemplateContract
 
 {$this->namespace}
 
-use Exception;
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
 use Gzoran\Http\ApiResponseTrait;
 use Illuminate\Http\Request;
@@ -65,10 +64,10 @@ class {$this->className} implements ExceptionHandlerContract
 
     /**
      * @param Request \$request
-     * @param Exception \$exception
+     * @param \$exception
      * @return mixed
      */
-    public function pageRender(Request \$request, Exception \$exception)
+    public function pageRender(Request \$request, \$exception)
     {
         return response(500, 500);
     }

@@ -25,7 +25,6 @@ class AppExceptionTemplate implements TemplateContract
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Support\Arr;
 
 class AppException extends Exception
 {
@@ -76,7 +75,7 @@ class AppException extends Exception
     public function getResponse()
     {
         \$response = [
-            'status'     => 0,
+            config('exception.status.key') => config('exception.status.value'),
             'error_code' => \$this->code,
             'message'    => \$this->getCodeMessage(\$this->code),
         ];
@@ -104,7 +103,7 @@ class AppException extends Exception
      */
     public function getCodeMessage(\$code)
     {
-        return Arr::get(\$this->codeList, \$code)['message'];
+        return array_get(\$this->codeList, \$code)['message'];
     }
 }
 EOF;
