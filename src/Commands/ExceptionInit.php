@@ -179,9 +179,9 @@ class ExceptionInit extends Command
      */
     private function makeHandlersFolder()
     {
-        $handler_folder = app_path() . '/Exceptions/Handlers';
-        if (! is_dir($handler_folder)) {
-            mkdir($handler_folder);
+        $handlerFolder = app_path() . '/Exceptions/Handlers';
+        if (! is_dir($handlerFolder)) {
+            mkdir($handlerFolder);
         }
     }
 
@@ -190,8 +190,8 @@ class ExceptionInit extends Command
      */
     private function generateAppException()
     {
-        $file_path = app_path() . '/Exceptions/AppException.php';
-        file_put_contents($file_path, $this->appExceptionTemplate->get());
+        $filePath = app_path() . '/Exceptions/AppException.php';
+        file_put_contents($filePath, $this->appExceptionTemplate->get());
     }
 
     /**
@@ -199,8 +199,8 @@ class ExceptionInit extends Command
      */
     private function generateAppExceptionHandler()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/AppExceptionHandler.php';
-        file_put_contents($handler_path, $this->appExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/AppExceptionHandler.php';
+        file_put_contents($handlerPath, $this->appExceptionHandlerTemplate->get());
     }
 
     /**
@@ -208,8 +208,8 @@ class ExceptionInit extends Command
      */
     private function generateExceptionHandler()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/ExceptionHandler.php';
-        file_put_contents($handler_path, $this->exceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/ExceptionHandler.php';
+        file_put_contents($handlerPath, $this->exceptionHandlerTemplate->get());
     }
 
     /**
@@ -217,8 +217,8 @@ class ExceptionInit extends Command
      */
     private function generateAuthenticationExceptionHandler()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/AuthenticationExceptionHandler.php';
-        file_put_contents($handler_path, $this->authenticationExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/AuthenticationExceptionHandler.php';
+        file_put_contents($handlerPath, $this->authenticationExceptionHandlerTemplate->get());
     }
 
     /**
@@ -226,8 +226,8 @@ class ExceptionInit extends Command
      */
     private function generateHttpExceptionHandler()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/HttpExceptionHandler.php';
-        file_put_contents($handler_path, $this->httpExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/HttpExceptionHandler.php';
+        file_put_contents($handlerPath, $this->httpExceptionHandlerTemplate->get());
     }
 
     /**
@@ -235,8 +235,8 @@ class ExceptionInit extends Command
      */
     private function generateMethodNotAllowedExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/MethodNotAllowedExceptionHandler.php';
-        file_put_contents($handler_path, $this->methodNotAllowedExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/MethodNotAllowedExceptionHandler.php';
+        file_put_contents($handlerPath, $this->methodNotAllowedExceptionHandlerTemplate->get());
     }
 
     /**
@@ -244,8 +244,8 @@ class ExceptionInit extends Command
      */
     private function generateMethodNotAllowedHttpExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/MethodNotAllowedHttpExceptionHandler.php';
-        file_put_contents($handler_path, $this->methodNotAllowedHttpExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/MethodNotAllowedHttpExceptionHandler.php';
+        file_put_contents($handlerPath, $this->methodNotAllowedHttpExceptionHandlerTemplate->get());
     }
 
     /**
@@ -253,8 +253,8 @@ class ExceptionInit extends Command
      */
     private function generateModelNotFoundExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/ModelNotFoundExceptionHandler.php';
-        file_put_contents($handler_path, $this->modelNotFoundExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/ModelNotFoundExceptionHandler.php';
+        file_put_contents($handlerPath, $this->modelNotFoundExceptionHandlerTemplate->get());
     }
 
     /**
@@ -262,8 +262,8 @@ class ExceptionInit extends Command
      */
     private function generateNotFoundHttpExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/NotFoundHttpExceptionHandler.php';
-        file_put_contents($handler_path, $this->notFoundHttpExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/NotFoundHttpExceptionHandler.php';
+        file_put_contents($handlerPath, $this->notFoundHttpExceptionHandlerTemplate->get());
     }
 
     /**
@@ -271,8 +271,8 @@ class ExceptionInit extends Command
      */
     private function generateQueryExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/QueryExceptionHandler.php';
-        file_put_contents($handler_path, $this->queryExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/QueryExceptionHandler.php';
+        file_put_contents($handlerPath, $this->queryExceptionHandlerTemplate->get());
     }
 
     /**
@@ -280,8 +280,8 @@ class ExceptionInit extends Command
      */
     private function generateRelationNotFoundExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/RelationNotFoundExceptionHandler.php';
-        file_put_contents($handler_path, $this->relationNotFoundExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/RelationNotFoundExceptionHandler.php';
+        file_put_contents($handlerPath, $this->relationNotFoundExceptionHandlerTemplate->get());
     }
 
     /**
@@ -289,8 +289,8 @@ class ExceptionInit extends Command
      */
     private function generateUnauthorizedExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/UnauthorizedExceptionHandler.php';
-        file_put_contents($handler_path, $this->unauthorizedExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/UnauthorizedExceptionHandler.php';
+        file_put_contents($handlerPath, $this->unauthorizedExceptionHandlerTemplate->get());
     }
 
     /**
@@ -298,7 +298,7 @@ class ExceptionInit extends Command
      */
     private function generateValidationExceptionHandlerTemplate()
     {
-        $handler_path = app_path() . '/Exceptions/Handlers/ValidationExceptionHandler.php';
-        file_put_contents($handler_path, $this->validationExceptionHandlerTemplate->get());
+        $handlerPath = app_path() . '/Exceptions/Handlers/ValidationExceptionHandler.php';
+        file_put_contents($handlerPath, $this->validationExceptionHandlerTemplate->get());
     }
 }

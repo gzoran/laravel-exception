@@ -79,8 +79,8 @@ class MakeExceptionHandler extends Command
 
         $template = new HandlerTemplate($this->namespace, $this->className);
 
-        $handler_path = $this->folderPath . DIRECTORY_SEPARATOR . $this->className . '.php';
-        file_put_contents($handler_path, $template->get());
+        $handlerPath = $this->folderPath . DIRECTORY_SEPARATOR . $this->className . '.php';
+        file_put_contents($handlerPath, $template->get());
 
         $this->info('Exception handler created successfully.');
     }
@@ -100,17 +100,17 @@ class MakeExceptionHandler extends Command
      */
     private function getFolderPath()
     {
-        $folder_path = '';
+        $folderPath = '';
         $count       = count($this->classExplode);
 
         foreach ($this->classExplode as $key => $value) {
             if (($key + 1) == $count) {
                 break;
             }
-            $folder_path .= DIRECTORY_SEPARATOR . $value;
+            $folderPath .= DIRECTORY_SEPARATOR . $value;
         }
 
-        return app_path() . $folder_path;
+        return app_path() . $folderPath;
     }
 
     /**
