@@ -5,8 +5,9 @@
  * Time: 11:11
  */
 
-namespace Gzoran\Exception;
+namespace Gzoran\Exception\Demos;
 
+use Gzoran\Exception\ExceptionHandlerTrait;
 
 class DemoHandler
 {

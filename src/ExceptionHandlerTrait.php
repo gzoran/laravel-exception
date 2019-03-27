@@ -70,9 +70,9 @@ trait ExceptionHandlerTrait
      */
     protected function expectsJson(Request $request)
     {
-        $api_starts_with = $this->apiStartsWith();
+        $apiStartsWith = $this->apiStartsWith();
 
-        foreach ($api_starts_with as $value) {
+        foreach ($apiStartsWith as $value) {
             if (Str::startsWith($request->getPathInfo(), $value)) {
                 return true;
             }
@@ -93,16 +93,16 @@ trait ExceptionHandlerTrait
         $handlers = $this->handlers();
 
         /**
-         * @var $handler_class ExceptionHandlerContract
+         * @var $handlerClass ExceptionHandlerContract
          */
-        foreach ($handlers as $exception_class => $handler_class) {
-            if (get_class($exception) != $exception_class) {
+        foreach ($handlers as $exceptionClass => $handlerClass) {
+            if (get_class($exception) != $exceptionClass) {
                 continue;
             }
             if ($this->expectsJson($request)) {
-                $render = app($handler_class)->apiRender($request, $exception);
+                $render = app($handlerClass)->apiRender($request, $exception);
             } else {
-                $render = app($handler_class)->pageRender($request, $exception);
+                $render = app($handlerClass)->pageRender($request, $exception);
             }
             break;
         }
