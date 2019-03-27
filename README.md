@@ -1,6 +1,6 @@
-# laravel-exception
+<h1 align="center">Laravel Exception</h1>
 
-Laravel 异常处理包
+<p align="center">Laravel 异常处理包</p>
 
 ## 框架要求
 
@@ -9,7 +9,7 @@ Laravel >= 5.5
 ## 安装
 
 ```shell
-composer require "gzoran/laravel-exception:~1.0"
+composer require "gzoran/laravel-exception:~2.0"
 ```
 
 ## 发布配置文件
@@ -213,3 +213,7 @@ throw new FooException();
 ...
 
 ```
+
+## License
+
+MIT
