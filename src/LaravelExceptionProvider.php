@@ -24,7 +24,7 @@ class LaravelExceptionProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/exception.php' => config_path('exception.php'),
-        ], 'exception');
+        ]);
 
     }
 

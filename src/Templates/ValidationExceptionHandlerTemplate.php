@@ -57,7 +57,7 @@ class ValidationExceptionHandler implements ExceptionHandlerContract
      */
     public function pageRender(Request \$request, \$exception)
     {
-        return false;
+        // You can return the response in need.
     }
 }
 EOF;

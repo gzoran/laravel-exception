@@ -80,11 +80,7 @@ class ExceptionHandler implements ExceptionHandlerContract
      */
     public function pageRender(Request \$request, \$exception)
     {
-        if (\$this->isDebug) {
-            return false;
-        }
-
-        return response(500, 500);
+        // You can return the response in need.
     }
 }
 EOF;

@@ -17,7 +17,7 @@ composer require "gzoran/laravel-exception:~1.0"
 此命令会在框架 config 目录下生成 exception.php 配置文件。
 
 ```shell
-php artisan vendor:publish --tag=exception
+php artisan vendor:publish --provider="Gzoran\Exception\LaravelExceptionProvider"
 ```
 
 ## 初始化命令

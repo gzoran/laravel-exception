@@ -29,26 +29,20 @@ use Exception;
 class AppException extends Exception
 {
     /**
-     * 错误码消息列表
-     *
      * @var array
      */
     protected \$codeList = [
         '10000' => [
-            'message' => '业务错误'
+            'message' => 'Business Error'
         ],
     ];
 
     /**
-     * 错误详情
-     *
      * @var array
      */
     protected \$errors;
 
     /**
-     * 状态码
-     *
      * @var int
      */
     protected \$httpStatus;
@@ -66,6 +60,18 @@ class AppException extends Exception
         \$this->message    = \$this->getCodeMessage(\$code);
         \$this->errors     = \$errors;
         \$this->httpStatus = \$httpStatus;
+        
+        if (\$errors && is_array(\$errors)) {
+            \$this->message .= ' : ';
+            foreach (\$errors as \$key => \$error) {
+                \$this->message .= '[' . \$key . ' : ' . \$error . '], ';
+            }
+            \$this->message = rtrim( \$this->message, ', ');
+        }
+
+        if (\$errors && is_string(\$errors)) {
+            \$this->message .= ' : ' . \$errors;
+        }
     }
 
     /**
@@ -103,7 +109,7 @@ class AppException extends Exception
      */
     public function getCodeMessage(\$code)
     {
-        return array_get(\$this->codeList, \$code)['message'];
+        return \$this->codeList[\$code]['message'];
     }
 }
 EOF;

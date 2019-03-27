@@ -69,7 +69,7 @@ class {$this->className} implements ExceptionHandlerContract
      */
     public function pageRender(Request \$request, \$exception)
     {
-        return response(500, 500);
+        // You can return the response in need.
     }
 }
 EOF;

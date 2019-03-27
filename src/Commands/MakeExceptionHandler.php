@@ -12,7 +12,7 @@ class MakeExceptionHandler extends Command
      *
      * @var string
      */
-    protected $signature = 'make:exception_handler {handler_class}';
+    protected $signature = 'exception:make_handler {handler_class}';
 
     /**
      * The console command description.
