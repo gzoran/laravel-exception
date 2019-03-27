@@ -8,9 +8,10 @@
 namespace Gzoran\Exception;
 
 use Exception;
+use Gzoran\ApiResponse\ApiResponseTrait;
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
-use Gzoran\Http\ApiResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 trait ExceptionHandlerTrait
 {
@@ -72,7 +73,7 @@ trait ExceptionHandlerTrait
         $api_starts_with = $this->apiStartsWith();
 
         foreach ($api_starts_with as $value) {
-            if (starts_with($request->getPathInfo(), $value)) {
+            if (Str::startsWith($request->getPathInfo(), $value)) {
                 return true;
             }
         }

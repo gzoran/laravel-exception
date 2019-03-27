@@ -26,7 +26,7 @@ namespace App\Exceptions\Handlers;
 
 use Exception;
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
-use Gzoran\Http\ApiResponseTrait;
+use Gzoran\ApiResponse\ApiResponseTrait;
 use Illuminate\Http\Request;
 
 class ExceptionHandler implements ExceptionHandlerContract

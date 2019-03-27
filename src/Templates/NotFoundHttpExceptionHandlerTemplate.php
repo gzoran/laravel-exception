@@ -25,7 +25,7 @@ class NotFoundHttpExceptionHandlerTemplate implements TemplateContract
 namespace App\Exceptions\Handlers;
 
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
-use Gzoran\Http\ApiResponseTrait;
+use Gzoran\ApiResponse\ApiResponseTrait;
 use Illuminate\Http\Request;
 
 class NotFoundHttpExceptionHandler implements ExceptionHandlerContract

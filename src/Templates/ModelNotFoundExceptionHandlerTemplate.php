@@ -25,7 +25,7 @@ class ModelNotFoundExceptionHandlerTemplate implements TemplateContract
 namespace App\Exceptions\Handlers;
 
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
-use Gzoran\Http\ApiResponseTrait;
+use Gzoran\ApiResponse\ApiResponseTrait;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 

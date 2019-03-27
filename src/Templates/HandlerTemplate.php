@@ -41,7 +41,7 @@ class HandlerTemplate implements TemplateContract
 {$this->namespace}
 
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
-use Gzoran\Http\ApiResponseTrait;
+use Gzoran\ApiResponse\ApiResponseTrait;
 use Illuminate\Http\Request;
 
 class {$this->className} implements ExceptionHandlerContract

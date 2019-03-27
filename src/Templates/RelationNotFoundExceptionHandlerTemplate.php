@@ -25,7 +25,7 @@ class RelationNotFoundExceptionHandlerTemplate implements TemplateContract
 namespace App\Exceptions\Handlers;
 
 use Gzoran\Exception\Contracts\ExceptionHandlerContract;
-use Gzoran\Http\ApiResponseTrait;
+use Gzoran\ApiResponse\ApiResponseTrait;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\Request;
 
