@@ -2,6 +2,9 @@
 
 <p align="center">Laravel 异常处理包</p>
 
+[![Build Status](https://travis-ci.org/gzoran/laravel-exception.svg?branch=master)](https://travis-ci.org/gzoran/laravel-exception)
+![StyleCI build status](https://github.styleci.io/repos/162661181/shield) 
+
 ## 框架要求
 
 Laravel >= 5.5
