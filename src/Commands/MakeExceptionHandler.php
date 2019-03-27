@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the gzoran/laravel-exception.
+ *
+ * (c) gzoran <gzoran@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Gzoran\Exception\Commands;
 
 use Gzoran\Exception\Templates\HandlerTemplate;
@@ -63,23 +72,23 @@ class MakeExceptionHandler extends Command
     {
         $this->handlerClass = $this->getHandlerClass();
         $this->classExplode = explode('\\', $this->handlerClass);
-        $this->className    = end($this->classExplode);
+        $this->className = end($this->classExplode);
 
-        if (count($this->classExplode) == 1) {
-            $this->folderPath = 'app' . DIRECTORY_SEPARATOR . 'Exceptions' . DIRECTORY_SEPARATOR . 'Handlers';
-            $this->namespace  = 'App\\Exceptions\\Handlers';
+        if (1 == count($this->classExplode)) {
+            $this->folderPath = 'app'.DIRECTORY_SEPARATOR.'Exceptions'.DIRECTORY_SEPARATOR.'Handlers';
+            $this->namespace = 'App\\Exceptions\\Handlers';
         } else {
             $this->folderPath = $this->getFolderPath();
-            $this->namespace  = $this->getNamespace();
+            $this->namespace = $this->getNamespace();
         }
 
-        if (! is_dir($this->folderPath)) {
+        if (!is_dir($this->folderPath)) {
             mkdir($this->folderPath, 0777, true);
         }
 
         $template = new HandlerTemplate($this->namespace, $this->className);
 
-        $handlerPath = $this->folderPath . DIRECTORY_SEPARATOR . $this->className . '.php';
+        $handlerPath = $this->folderPath.DIRECTORY_SEPARATOR.$this->className.'.php';
         file_put_contents($handlerPath, $template->get());
 
         $this->info('Exception handler created successfully.');
@@ -87,6 +96,7 @@ class MakeExceptionHandler extends Command
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return mixed
      */
     private function getHandlerClass()
@@ -96,40 +106,42 @@ class MakeExceptionHandler extends Command
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return string
      */
     private function getFolderPath()
     {
         $folderPath = '';
-        $count       = count($this->classExplode);
+        $count = count($this->classExplode);
 
         foreach ($this->classExplode as $key => $value) {
             if (($key + 1) == $count) {
                 break;
             }
-            $folderPath .= DIRECTORY_SEPARATOR . $value;
+            $folderPath .= DIRECTORY_SEPARATOR.$value;
         }
 
-        return app_path() . $folderPath;
+        return app_path().$folderPath;
     }
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return string
      */
     private function getNamespace()
     {
         $namespace = '';
-        $count     = count($this->classExplode);
+        $count = count($this->classExplode);
 
         foreach ($this->classExplode as $key => $value) {
             if (($key + 1) == $count) {
                 break;
             }
 
-            $namespace .= '\\' . $value;
+            $namespace .= '\\'.$value;
         }
 
-        return 'App\\' . ltrim($namespace, '\\');
+        return 'App\\'.ltrim($namespace, '\\');
     }
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the gzoran/laravel-exception.
+ *
+ * (c) gzoran <gzoran@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Gzoran\Exception\Commands;
 
 use Gzoran\Exception\Templates\AppExceptionHandlerTemplate;
@@ -101,19 +110,19 @@ class ExceptionInit extends Command
     /**
      * Create a new command instance.
      *
-     * @param AppExceptionTemplate $appExceptionTemplate
-     * @param AppExceptionHandlerTemplate $appExceptionHandlerTemplate
-     * @param ExceptionHandlerTemplate $exceptionHandlerTemplate
-     * @param AuthenticationExceptionHandlerTemplate $authenticationExceptionHandlerTemplate
-     * @param HttpExceptionHandlerTemplate $httpExceptionHandlerTemplate
-     * @param MethodNotAllowedExceptionHandlerTemplate $methodNotAllowedExceptionHandlerTemplate
+     * @param AppExceptionTemplate                         $appExceptionTemplate
+     * @param AppExceptionHandlerTemplate                  $appExceptionHandlerTemplate
+     * @param ExceptionHandlerTemplate                     $exceptionHandlerTemplate
+     * @param AuthenticationExceptionHandlerTemplate       $authenticationExceptionHandlerTemplate
+     * @param HttpExceptionHandlerTemplate                 $httpExceptionHandlerTemplate
+     * @param MethodNotAllowedExceptionHandlerTemplate     $methodNotAllowedExceptionHandlerTemplate
      * @param MethodNotAllowedHttpExceptionHandlerTemplate $methodNotAllowedHttpExceptionHandlerTemplate
-     * @param ModelNotFoundExceptionHandlerTemplate $modelNotFoundExceptionHandlerTemplate
-     * @param NotFoundHttpExceptionHandlerTemplate $notFoundHttpExceptionHandlerTemplate
-     * @param QueryExceptionHandlerTemplate $queryExceptionHandlerTemplate
-     * @param RelationNotFoundExceptionHandlerTemplate $relationNotFoundExceptionHandlerTemplate
-     * @param UnauthorizedExceptionHandlerTemplate $unauthorizedExceptionHandlerTemplate
-     * @param ValidationExceptionHandlerTemplate $validationExceptionHandlerTemplate
+     * @param ModelNotFoundExceptionHandlerTemplate        $modelNotFoundExceptionHandlerTemplate
+     * @param NotFoundHttpExceptionHandlerTemplate         $notFoundHttpExceptionHandlerTemplate
+     * @param QueryExceptionHandlerTemplate                $queryExceptionHandlerTemplate
+     * @param RelationNotFoundExceptionHandlerTemplate     $relationNotFoundExceptionHandlerTemplate
+     * @param UnauthorizedExceptionHandlerTemplate         $unauthorizedExceptionHandlerTemplate
+     * @param ValidationExceptionHandlerTemplate           $validationExceptionHandlerTemplate
      */
     public function __construct(
         AppExceptionTemplate $appExceptionTemplate,
@@ -129,23 +138,22 @@ class ExceptionInit extends Command
         RelationNotFoundExceptionHandlerTemplate $relationNotFoundExceptionHandlerTemplate,
         UnauthorizedExceptionHandlerTemplate $unauthorizedExceptionHandlerTemplate,
         ValidationExceptionHandlerTemplate $validationExceptionHandlerTemplate
-    )
-    {
+    ) {
         parent::__construct();
 
-        $this->appExceptionTemplate                         = $appExceptionTemplate;
-        $this->appExceptionHandlerTemplate                  = $appExceptionHandlerTemplate;
-        $this->exceptionHandlerTemplate                     = $exceptionHandlerTemplate;
-        $this->authenticationExceptionHandlerTemplate       = $authenticationExceptionHandlerTemplate;
-        $this->httpExceptionHandlerTemplate                 = $httpExceptionHandlerTemplate;
-        $this->methodNotAllowedExceptionHandlerTemplate     = $methodNotAllowedExceptionHandlerTemplate;
+        $this->appExceptionTemplate = $appExceptionTemplate;
+        $this->appExceptionHandlerTemplate = $appExceptionHandlerTemplate;
+        $this->exceptionHandlerTemplate = $exceptionHandlerTemplate;
+        $this->authenticationExceptionHandlerTemplate = $authenticationExceptionHandlerTemplate;
+        $this->httpExceptionHandlerTemplate = $httpExceptionHandlerTemplate;
+        $this->methodNotAllowedExceptionHandlerTemplate = $methodNotAllowedExceptionHandlerTemplate;
         $this->methodNotAllowedHttpExceptionHandlerTemplate = $methodNotAllowedHttpExceptionHandlerTemplate;
-        $this->modelNotFoundExceptionHandlerTemplate        = $modelNotFoundExceptionHandlerTemplate;
-        $this->notFoundHttpExceptionHandlerTemplate         = $notFoundHttpExceptionHandlerTemplate;
-        $this->queryExceptionHandlerTemplate                = $queryExceptionHandlerTemplate;
-        $this->relationNotFoundExceptionHandlerTemplate     = $relationNotFoundExceptionHandlerTemplate;
-        $this->unauthorizedExceptionHandlerTemplate         = $unauthorizedExceptionHandlerTemplate;
-        $this->validationExceptionHandlerTemplate           = $validationExceptionHandlerTemplate;
+        $this->modelNotFoundExceptionHandlerTemplate = $modelNotFoundExceptionHandlerTemplate;
+        $this->notFoundHttpExceptionHandlerTemplate = $notFoundHttpExceptionHandlerTemplate;
+        $this->queryExceptionHandlerTemplate = $queryExceptionHandlerTemplate;
+        $this->relationNotFoundExceptionHandlerTemplate = $relationNotFoundExceptionHandlerTemplate;
+        $this->unauthorizedExceptionHandlerTemplate = $unauthorizedExceptionHandlerTemplate;
+        $this->validationExceptionHandlerTemplate = $validationExceptionHandlerTemplate;
     }
 
     /**
@@ -179,8 +187,8 @@ class ExceptionInit extends Command
      */
     private function makeHandlersFolder()
     {
-        $handlerFolder = app_path() . '/Exceptions/Handlers';
-        if (! is_dir($handlerFolder)) {
+        $handlerFolder = app_path().'/Exceptions/Handlers';
+        if (!is_dir($handlerFolder)) {
             mkdir($handlerFolder);
         }
     }
@@ -190,7 +198,7 @@ class ExceptionInit extends Command
      */
     private function generateAppException()
     {
-        $filePath = app_path() . '/Exceptions/AppException.php';
+        $filePath = app_path().'/Exceptions/AppException.php';
         file_put_contents($filePath, $this->appExceptionTemplate->get());
     }
 
@@ -199,7 +207,7 @@ class ExceptionInit extends Command
      */
     private function generateAppExceptionHandler()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/AppExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/AppExceptionHandler.php';
         file_put_contents($handlerPath, $this->appExceptionHandlerTemplate->get());
     }
 
@@ -208,7 +216,7 @@ class ExceptionInit extends Command
      */
     private function generateExceptionHandler()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/ExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/ExceptionHandler.php';
         file_put_contents($handlerPath, $this->exceptionHandlerTemplate->get());
     }
 
@@ -217,7 +225,7 @@ class ExceptionInit extends Command
      */
     private function generateAuthenticationExceptionHandler()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/AuthenticationExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/AuthenticationExceptionHandler.php';
         file_put_contents($handlerPath, $this->authenticationExceptionHandlerTemplate->get());
     }
 
@@ -226,7 +234,7 @@ class ExceptionInit extends Command
      */
     private function generateHttpExceptionHandler()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/HttpExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/HttpExceptionHandler.php';
         file_put_contents($handlerPath, $this->httpExceptionHandlerTemplate->get());
     }
 
@@ -235,7 +243,7 @@ class ExceptionInit extends Command
      */
     private function generateMethodNotAllowedExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/MethodNotAllowedExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/MethodNotAllowedExceptionHandler.php';
         file_put_contents($handlerPath, $this->methodNotAllowedExceptionHandlerTemplate->get());
     }
 
@@ -244,7 +252,7 @@ class ExceptionInit extends Command
      */
     private function generateMethodNotAllowedHttpExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/MethodNotAllowedHttpExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/MethodNotAllowedHttpExceptionHandler.php';
         file_put_contents($handlerPath, $this->methodNotAllowedHttpExceptionHandlerTemplate->get());
     }
 
@@ -253,7 +261,7 @@ class ExceptionInit extends Command
      */
     private function generateModelNotFoundExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/ModelNotFoundExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/ModelNotFoundExceptionHandler.php';
         file_put_contents($handlerPath, $this->modelNotFoundExceptionHandlerTemplate->get());
     }
 
@@ -262,7 +270,7 @@ class ExceptionInit extends Command
      */
     private function generateNotFoundHttpExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/NotFoundHttpExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/NotFoundHttpExceptionHandler.php';
         file_put_contents($handlerPath, $this->notFoundHttpExceptionHandlerTemplate->get());
     }
 
@@ -271,7 +279,7 @@ class ExceptionInit extends Command
      */
     private function generateQueryExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/QueryExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/QueryExceptionHandler.php';
         file_put_contents($handlerPath, $this->queryExceptionHandlerTemplate->get());
     }
 
@@ -280,7 +288,7 @@ class ExceptionInit extends Command
      */
     private function generateRelationNotFoundExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/RelationNotFoundExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/RelationNotFoundExceptionHandler.php';
         file_put_contents($handlerPath, $this->relationNotFoundExceptionHandlerTemplate->get());
     }
 
@@ -289,7 +297,7 @@ class ExceptionInit extends Command
      */
     private function generateUnauthorizedExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/UnauthorizedExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/UnauthorizedExceptionHandler.php';
         file_put_contents($handlerPath, $this->unauthorizedExceptionHandlerTemplate->get());
     }
 
@@ -298,7 +306,7 @@ class ExceptionInit extends Command
      */
     private function generateValidationExceptionHandlerTemplate()
     {
-        $handlerPath = app_path() . '/Exceptions/Handlers/ValidationExceptionHandler.php';
+        $handlerPath = app_path().'/Exceptions/Handlers/ValidationExceptionHandler.php';
         file_put_contents($handlerPath, $this->validationExceptionHandlerTemplate->get());
     }
 }

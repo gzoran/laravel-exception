@@ -1,8 +1,12 @@
 <?php
-/**
- * Created by Mike <zhengzhe94@gmail.com>.
- * Date: 2018/12/4
- * Time: 17:12
+
+/*
+ * This file is part of the gzoran/laravel-exception.
+ *
+ * (c) gzoran <gzoran@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Gzoran\Exception;
@@ -19,6 +23,7 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return array
      */
     protected function handlers()
@@ -28,6 +33,7 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return string
      */
     protected function baseExceptionHandler()
@@ -37,6 +43,7 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return array
      */
     protected function apiStartsWith()
@@ -46,8 +53,10 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
-     * @param Request $request
+     *
+     * @param Request   $request
      * @param Exception $exception
+     *
      * @return mixed
      */
     protected function handlersRender(Request $request, Exception $exception)
@@ -65,7 +74,9 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @param Request $request
+     *
      * @return bool
      */
     protected function expectsJson(Request $request)
@@ -83,17 +94,19 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
-     * @param Request $request
+     *
+     * @param Request   $request
      * @param Exception $exception
+     *
      * @return mixed
      */
     protected function matchExceptionRender(Request $request, Exception $exception)
     {
-        $render   = false;
+        $render = false;
         $handlers = $this->handlers();
 
         /**
-         * @var $handlerClass ExceptionHandlerContract
+         * @var ExceptionHandlerContract
          */
         foreach ($handlers as $exceptionClass => $handlerClass) {
             if (get_class($exception) != $exceptionClass) {
@@ -104,6 +117,7 @@ trait ExceptionHandlerTrait
             } else {
                 $render = app($handlerClass)->pageRender($request, $exception);
             }
+
             break;
         }
 
@@ -112,8 +126,10 @@ trait ExceptionHandlerTrait
 
     /**
      * @author Mike <zhengzhe94@gmail.com>
-     * @param Request $request
+     *
+     * @param Request   $request
      * @param Exception $exception
+     *
      * @return mixed
      */
     protected function baseExceptionRender(Request $request, Exception $exception)
