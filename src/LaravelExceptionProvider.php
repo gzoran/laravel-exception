@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the gzoran/laravel-exception.
+ *
+ * (c) gzoran <gzoran@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Gzoran\Exception;
 
 use Gzoran\Exception\Commands\ExceptionInit;
@@ -10,8 +19,6 @@ class LaravelExceptionProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -23,15 +30,12 @@ class LaravelExceptionProvider extends ServiceProvider
         }
 
         $this->publishes([
-            __DIR__ . '/exception.php' => config_path('exception.php'),
+            __DIR__.'/exception.php' => config_path('exception.php'),
         ]);
-
     }
 
     /**
      * Register services.
-     *
-     * @return void
      */
     public function register()
     {

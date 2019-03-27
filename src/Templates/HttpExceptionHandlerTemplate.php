@@ -1,20 +1,23 @@
 <?php
-/**
- * Created by Mike <zhengzhe94@gmail.com>.
- * Date: 2019/1/14
- * Time: 16:09
+
+/*
+ * This file is part of the gzoran/laravel-exception.
+ *
+ * (c) gzoran <gzoran@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
  */
 
 namespace Gzoran\Exception\Templates;
-
 
 use Gzoran\Exception\Contracts\TemplateContract;
 
 class HttpExceptionHandlerTemplate implements TemplateContract
 {
-
     /**
      * @author Mike <zhengzhe94@gmail.com>
+     *
      * @return string
      */
     public function get()
